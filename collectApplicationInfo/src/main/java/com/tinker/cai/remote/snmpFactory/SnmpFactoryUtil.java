@@ -9,16 +9,13 @@
  */
 package com.tinker.cai.remote.snmpFactory;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
 import org.snmp4j.Snmp;
 import org.snmp4j.Target;
-import org.snmp4j.mp.SnmpConstants;
 import org.snmp4j.smi.Address;
 import org.snmp4j.smi.GenericAddress;
 import org.snmp4j.smi.OID;
@@ -27,7 +24,6 @@ import org.snmp4j.smi.VariableBinding;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 import org.snmp4j.util.DefaultPDUFactory;
 import org.snmp4j.util.PDUFactory;
-import org.snmp4j.util.TableEvent;
 import org.snmp4j.util.TableUtils;
 
 import com.tinker.cai.remote.util.MibConstant;
@@ -51,7 +47,7 @@ public class SnmpFactoryUtil
      * @return pdu包
      * @since  1.0.0
      */
-    public PDU getPDU(String stOID, int iType) {
+    private PDU getPDU(String stOID, int iType) {
         PDU pdu = new PDU();
         pdu.add(new VariableBinding(new OID(stOID)));
         pdu.setType(iType);
@@ -63,7 +59,7 @@ public class SnmpFactoryUtil
      * @return  目标对象
      * @since  1.0.0
      */
-    public Target getTarget(String stIP) {
+    private static Target getTarget(String stIP) {
         Address targetAddress = GenericAddress.parse(stIP);
         CommunityTarget target = new CommunityTarget();
         target.setCommunity(new OctetString(MibConstant.COMMUNITY));
@@ -73,7 +69,15 @@ public class SnmpFactoryUtil
         target.setRetries(MibConstant.RETRIES);
         return target;
     }
-    public List getSNMPTable(String stIP, String stPort, Map oidMaps, int iType) {
+    /**
+     * 获取SnmpTableList，各自进行封装
+     * @param stIP ip地址
+     * @param stPort 端口
+     * @param oidMaps oid封装
+     * @param iType 类型
+     * @return
+     */
+    public static List getSNMPTable(String stIP, String stPort, Map oidMaps, int iType) {
         Target target = getTarget(stIP + MibConstant.PUDPREFIX + stPort);
         List list =null;
         try {
@@ -87,20 +91,11 @@ public class SnmpFactoryUtil
             OID[] columns = new OID[oidMaps.size()];
             if(null!=arrayoids&&arrayoids.length>0){
             	for(int i =0;i<columns.length;i++){
-            		columns[i] = new VariableBinding(new OID(String.valueOf(arrayoids[i]))).getOid();
+            		//System.out.println(arrayoids[i]+":"+String.valueOf(arrayoids[i]).replaceAll("(\\.0)*$", ""));
+            		columns[i] = new VariableBinding(new OID(String.valueOf(arrayoids[i]).replaceAll("(\\.0)*$", ""))).getOid();
             	}
             }
-           // columns[0] = new VariableBinding(new OID(stOID)).getOid();
              list = tu.getTable(target, columns, null, null);
-//            for (int i = 0; i < list.size(); i++) {
-//                TableEvent te = (TableEvent) list.get(i);
-//                VariableBinding[] vb = te.getColumns();
-////                for (int j = 0; j < vb.length; j++) {
-//////
-////                   System.out.println(vb[j]);
-////                m+=Integer.valueOf(vb[j].getVariable().toInt());
-////                }
-//            }
             snmp.close();
         } catch (Exception e) {
             e.printStackTrace();

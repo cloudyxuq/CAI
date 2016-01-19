@@ -17,6 +17,6 @@ public abstract interface ICpuService {
 	 * @param mibs mibs值数据
 	 * @return
 	 */
-	public abstract Map<String,Object> getCpuMapInfo(String ip,String port,String save_path,String []mibs);
+	public abstract Map<String,String> getCpuMapInfo(String ip,String port,String save_path, Map<String,String> oidMaps);
 
 }
