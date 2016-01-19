@@ -3,6 +3,16 @@
  */
 package com.tinker.cai.remote;
 
+import java.util.Map;
+
+import com.tinker.cai.remote.cpu.CpuServiceImpl;
+import com.tinker.cai.remote.cpu.ICpuService;
+import com.tinker.cai.remote.mem.IMemoryService;
+import com.tinker.cai.remote.mem.MemoryServiceImpl;
+import com.tinker.cai.remote.util.ConvertMap2Json;
+
+import net.sf.json.JSONObject;
+
 /**
  * @author tinker
  *
@@ -21,16 +31,28 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 	 * @see com.tinker.cai.remote.IRemoteSession#getCpuInfo(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public String getCpuInfo(String remoteIp, String port, String save_path) {
-		// TODO Auto-generated method stub
-		return null;
+		ICpuService cpuservice = new CpuServiceImpl();
+		Map cpuInfoMap = cpuservice.getCpuMapInfo(remoteIp, port, save_path, null);
+		if(cpuInfoMap!=null&&!cpuInfoMap.isEmpty()){
+			
+			return ConvertMap2Json.buildJsonBody(cpuInfoMap, 0, false);
+		}
+		return "";
+		
+		
 	}
 
 	/* (non-Javadoc)
 	 * @see com.tinker.cai.remote.IRemoteSession#getMemoryInfo(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public String getMemoryInfo(String remoteIp, String port, String save_path) {
-		// TODO Auto-generated method stub
-		return null;
+		IMemoryService cpuservice = new MemoryServiceImpl();
+		Map MemInfoMap = cpuservice.getMemoryMapInfo(remoteIp, port, save_path, null);
+		if(MemInfoMap!=null&&!MemInfoMap.isEmpty()){
+			
+			return ConvertMap2Json.buildJsonBody(MemInfoMap, 0, false);
+		}
+		return "";
 	}
 
 	/* (non-Javadoc)

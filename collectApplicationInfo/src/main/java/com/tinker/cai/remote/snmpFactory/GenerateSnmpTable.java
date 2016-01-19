@@ -39,7 +39,6 @@ public class GenerateSnmpTable {
 		    }
 		}
 		if(!getSnmpMap.isEmpty()){
-			
 			//对returnMap进行再次封装
 			for (Map.Entry<String, String> entry : returnMap.entrySet()) {
 				   //System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
