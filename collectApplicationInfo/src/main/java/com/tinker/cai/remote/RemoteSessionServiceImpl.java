@@ -7,11 +7,11 @@ import java.util.Map;
 
 import com.tinker.cai.remote.cpu.CpuServiceImpl;
 import com.tinker.cai.remote.cpu.ICpuService;
+import com.tinker.cai.remote.host.HostServiceImpl;
+import com.tinker.cai.remote.host.IHostService;
 import com.tinker.cai.remote.mem.IMemoryService;
 import com.tinker.cai.remote.mem.MemoryServiceImpl;
 import com.tinker.cai.remote.util.ConvertMap2Json;
-
-import net.sf.json.JSONObject;
 
 /**
  * @author tinker
@@ -23,8 +23,14 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 	 * @see com.tinker.cai.remote.IRemoteSession#getHostInfo(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public String getHostInfo(String remoteIp, String port, String save_path) {
-		// TODO Auto-generated method stub
-		return null;
+		IHostService cpuservice = new HostServiceImpl();
+		Map hostInfoMap = cpuservice.getHostMapInfo(remoteIp, port, save_path, null);
+		if(hostInfoMap!=null&&!hostInfoMap.isEmpty()){
+			
+			return ConvertMap2Json.buildJsonBody(hostInfoMap, 0, false);
+		}
+		return "";
+		
 	}
 
 	/* (non-Javadoc)

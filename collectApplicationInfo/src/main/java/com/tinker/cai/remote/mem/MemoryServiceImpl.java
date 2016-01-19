@@ -36,15 +36,8 @@ public class MemoryServiceImpl implements IMemoryService {
 			mibMap = LoadMibs.getMapMibsObject(MibConstant.MEMORY);
 		}
 		List list = SnmpFactoryUtil.getSNMPTable(ip, port, mibMap, PDU.GET);
-	
 			//进行snmp连接访问
 		return GenerateSnmpTable.generateSnmpList(list,mibMap);
-	}
-	public static void main(String[] args) {
-		Map<String,String> map =new MemoryServiceImpl().getMemoryMapInfo("192.168.4.12", "161", "dd",null);
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			   System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
-			  }
 	}
 
 }

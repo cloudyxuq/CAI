@@ -70,7 +70,7 @@ public class SnmpFactoryUtil
         return target;
     }
     /**
-     * 获取SnmpTableList，各自进行封装
+     * 通过应答pdu获得mib信息（之前绑定的OID的值）
      * @param stIP ip地址
      * @param stPort 端口
      * @param oidMaps oid封装
@@ -91,7 +91,7 @@ public class SnmpFactoryUtil
             OID[] columns = new OID[oidMaps.size()];
             if(null!=arrayoids&&arrayoids.length>0){
             	for(int i =0;i<columns.length;i++){
-            		//System.out.println(arrayoids[i]+":"+String.valueOf(arrayoids[i]).replaceAll("(\\.0)*$", ""));
+            		//去除掉末尾.0
             		columns[i] = new VariableBinding(new OID(String.valueOf(arrayoids[i]).replaceAll("(\\.0)*$", ""))).getOid();
             	}
             }
@@ -102,10 +102,4 @@ public class SnmpFactoryUtil
         }
         return list;
     }
- 
-//    public static void main(String[] args) {
-//        SnmpFactoryUtil snmp = new SnmpFactoryUtil();
-//        String ret = snmp.getSNMP("192.168.4.254", "161",
-//                ".1.3.6.1.2.1.25.5.1.1.2", PDU.GET);
-//    }
 }
