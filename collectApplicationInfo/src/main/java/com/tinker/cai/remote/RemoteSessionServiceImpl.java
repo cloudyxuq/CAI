@@ -11,6 +11,8 @@ import com.tinker.cai.remote.host.HostServiceImpl;
 import com.tinker.cai.remote.host.IHostService;
 import com.tinker.cai.remote.mem.IMemoryService;
 import com.tinker.cai.remote.mem.MemoryServiceImpl;
+import com.tinker.cai.remote.storage.IStorageService;
+import com.tinker.cai.remote.storage.StorageServiceImpl;
 import com.tinker.cai.remote.util.ConvertMap2Json;
 
 /**
@@ -64,9 +66,14 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 	/* (non-Javadoc)
 	 * @see com.tinker.cai.remote.IRemoteSession#getDiskInfo(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public String getDiskInfo(String remoteIp, String port, String save_path) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getStorageInfo(String remoteIp, String port, String save_path) {
+		IStorageService cpuservice = new StorageServiceImpl();
+		Map storageInfoMap = cpuservice.getStorageMapInfo(remoteIp, port, save_path, null);
+		if(storageInfoMap!=null&&!storageInfoMap.isEmpty()){
+			
+			return ConvertMap2Json.buildJsonBody(storageInfoMap, 0, false);
+		}
+		return "";
 	}
 
 	/* (non-Javadoc)

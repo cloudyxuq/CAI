@@ -43,7 +43,7 @@ public abstract interface IRemoteSession {
 	* @param save_path 保存地址
     * @return Json字符串
     */
-   public abstract String getDiskInfo(String remoteIp,String port,String save_path);
+   public abstract String getStorageInfo(String remoteIp,String port,String save_path);
    /**
     * 获取数据库基础信息
     * @param remoteIp 远程机器ip地址eg：192.1.1.1
