@@ -39,9 +39,9 @@ public class SnmpGet {
      */
     public static void main(String[] args) {
 
-        String ip = "192.168.8.254";
+        String ip = "192.168.4.12";
         String community = "public";
-        String oidval = "1.3.6.1.2.1.1.3.0";
+        String oidval = "1.3.6.1.2.1.1.7.0";
         SnmpGet tester = new SnmpGet();
         tester.snmpGet(ip, community, oidval);
 

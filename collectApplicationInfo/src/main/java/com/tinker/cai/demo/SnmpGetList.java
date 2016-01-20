@@ -30,7 +30,7 @@ import org.snmp4j.transport.DefaultUdpTransportMapping;
 */
 public class SnmpGetList {
 
-    private static int version = SnmpConstants.version1;
+    private static int version = SnmpConstants.version2c;
     private static String protocol = "udp";
     private static int port = 161;
 
@@ -40,11 +40,11 @@ public class SnmpGetList {
      */
     public static void main(String[] args) {
 
-        String ip = "192.168.8.254";
+        String ip = "192.168.4.12";
         String community = "public";
         SnmpGetList tester = new SnmpGetList();
         List<String> oidList = new ArrayList<String>();
-        oidList.add(".1.3.6.1.2.1.1.1.0");
+        oidList.add(".1.3.6.1.2.1.25.2.3");
         oidList.add(".1.3.6.1.2.1.1.3.0");
         oidList.add(".1.3.6.1.2.1.1.5.0");
         // synchronous

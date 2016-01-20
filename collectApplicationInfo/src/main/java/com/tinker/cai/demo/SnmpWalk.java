@@ -41,7 +41,7 @@ public class SnmpWalk {
 	    public static void main(String[] args) {
 	        String ip = "192.168.4.12";
 	        String community = "public";
-	        String targetOid = "1.3.6.1.2.1.25.2.3.1.5";
+	        String targetOid = ".1.3.6.1.2.1.1.7.0";
 	        SnmpWalk tester = new SnmpWalk();
 	        tester.snmpWalk(ip, community, targetOid);
 

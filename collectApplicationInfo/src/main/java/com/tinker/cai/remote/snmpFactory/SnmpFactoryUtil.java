@@ -82,6 +82,8 @@ public class SnmpFactoryUtil
         List list =null;
         try {
         	 
+        	
+        	//[org.snmp4j.util.TableEvent[index=0,vbs=[1.3.6.1.4.1.2021.11.3.0 = 0, null],status=0,exception=null,report=null], org.snmp4j.util.TableEvent[index=768,vbs=[null, 1.3.6.1.2.1.25.3.3.1.2.768 = 1],status=0,exception=null,report=null], org.snmp4j.util.TableEvent[index=769,vbs=[null, 1.3.6.1.2.1.25.3.3.1.2.769 = 1],status=0,exception=null,report=null]]
             DefaultUdpTransportMapping udpTransportMap = new DefaultUdpTransportMapping();
             Snmp snmp = new Snmp(udpTransportMap);
             snmp.listen();

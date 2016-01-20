@@ -32,7 +32,7 @@ public class CpuServiceImpl implements ICpuService {
 			// 获取cpu基础map对象
 			mibMap = LoadMibs.getMapMibsObject(MibConstant.CPU);
 		}
-		List list = SnmpFactoryUtil.getSNMPTable(ip, port, mibMap, PDU.GETNEXT);
+		List list = SnmpFactoryUtil.getSNMPTable(ip, port, mibMap, PDU.GET);
 
 		// 进行snmp连接访问
 		return GenerateSnmpTable.generateSnmpList(list, mibMap);
