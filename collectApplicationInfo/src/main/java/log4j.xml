@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+	<appender name="CONSOLE_LOG" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy/MM/dd HH:mm:ss.SSS}][][0x000252000FB60000][%p][%m][%c][%M,%L][%t]%n" />
+		</layout>
+	</appender>
+
+	<appender name="CAI_LOG" class="com.tinker.log.ZipRollingFileAppender">
+		<param name="File" value="logs/cai.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="THIRD_LOG" class="com.tinker.log.ZipRollingFileAppender">
+		<param name="File" value="logs/cai_thirdPart.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy/MM/dd HH:mm:ss.SSS}][][0x000252000FB60000][%p][%m][%c][%M,%L][%t]%n" />
+		</layout>
+	</appender>
+
+	<!-- LEGO Log(Level: TRACE < DEBUG < INFO < WARN < ERROR < FATAL) -->
+	<logger name="com.tinker.cai" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="CAI_LOG" />
+	</logger>
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="THIRD_LOG" />
+	</root>
+
+</log4j:configuration>

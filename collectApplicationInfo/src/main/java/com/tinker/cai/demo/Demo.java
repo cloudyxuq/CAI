@@ -1,4 +1,4 @@
-package com.tinker.cai;
+package com.tinker.cai.demo;
 
 import java.io.IOException;
 import org.snmp4j.CommunityTarget;

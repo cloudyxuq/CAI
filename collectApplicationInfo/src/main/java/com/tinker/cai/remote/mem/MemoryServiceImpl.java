@@ -35,7 +35,7 @@ public class MemoryServiceImpl implements IMemoryService {
 			//获取Mem基础map对象
 			mibMap = LoadMibs.getMapMibsObject(MibConstant.MEMORY);
 		}
-		List list = SnmpFactoryUtil.getSNMPTable(ip, port, mibMap, PDU.GET);
+		List list = SnmpFactoryUtil.getSNMPTable(ip, port, mibMap, PDU.GETNEXT);
 			//进行snmp连接访问
 		return GenerateSnmpTable.generateSnmpList(list,mibMap);
 	}
