@@ -3,7 +3,6 @@
  */
 package com.tinker.cai.remote.util;
 
-import org.snmp4j.Snmp;
 import org.snmp4j.mp.SnmpConstants;
 
 /**
@@ -16,6 +15,7 @@ public class MibConstant {
 	public static final String MEMORY="MEM_";
 	public static final String STORAGE="STORAGE_";
 	public static final String HOST="HOST_";
+	public static final String ALL="ALL_";
 	
 	//访问
 	public static final String COMMUNITY ="public";

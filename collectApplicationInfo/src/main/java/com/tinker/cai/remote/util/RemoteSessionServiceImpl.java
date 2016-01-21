@@ -1,8 +1,9 @@
 /**
  * 远程调用实现类
  */
-package com.tinker.cai.remote;
+package com.tinker.cai.remote.util;
 
+import java.util.Date;
 import java.util.Map;
 
 import com.tinker.cai.remote.cpu.CpuServiceImpl;
@@ -13,7 +14,6 @@ import com.tinker.cai.remote.mem.IMemoryService;
 import com.tinker.cai.remote.mem.MemoryServiceImpl;
 import com.tinker.cai.remote.storage.IStorageService;
 import com.tinker.cai.remote.storage.StorageServiceImpl;
-import com.tinker.cai.remote.util.ConvertMap2Json;
 
 /**
  * @author tinker
@@ -29,7 +29,7 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 		Map hostInfoMap = cpuservice.getHostMapInfo(remoteIp, port, save_path, null);
 		if(hostInfoMap!=null&&!hostInfoMap.isEmpty()){
 			
-			return ConvertMap2Json.buildJsonBody(hostInfoMap, 0, false);
+			return ConvertMap2Json.buildJsonBody(MibConstant.HOST,hostInfoMap, 0, false);
 		}
 		return "";
 		
@@ -43,7 +43,7 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 		Map cpuInfoMap = cpuservice.getCpuMapInfo(remoteIp, port, save_path, null);
 		if(cpuInfoMap!=null&&!cpuInfoMap.isEmpty()){
 			
-			return ConvertMap2Json.buildJsonBody(cpuInfoMap, 0, false);
+			 return ConvertMap2Json.buildJsonBody(MibConstant.CPU,cpuInfoMap, 0, false);
 		}
 		return "";
 		
@@ -58,7 +58,7 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 		Map MemInfoMap = cpuservice.getMemoryMapInfo(remoteIp, port, save_path, null);
 		if(MemInfoMap!=null&&!MemInfoMap.isEmpty()){
 			
-			return ConvertMap2Json.buildJsonBody(MemInfoMap, 0, false);
+			return ConvertMap2Json.buildJsonBody(MibConstant.MEMORY,MemInfoMap, 0, false);
 		}
 		return "";
 	}
@@ -71,7 +71,7 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 		Map storageInfoMap = cpuservice.getStorageMapInfo(remoteIp, port, save_path, null);
 		if(storageInfoMap!=null&&!storageInfoMap.isEmpty()){
 			
-			return ConvertMap2Json.buildJsonBody(storageInfoMap, 0, false);
+			return ConvertMap2Json.buildJsonBody(MibConstant.STORAGE,storageInfoMap, 0, false);
 		}
 		return "";
 	}
@@ -90,6 +90,13 @@ public class RemoteSessionServiceImpl implements IRemoteSession {
 	public String getAppInfo(String remoteIp, String port, String save_path) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public String getAllInfo(String remoteIp, String port, String save_path) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("{\n\"").append(MibConstant.ALL+ConvertMap2Json.formatDate(new Date())).append("\":[").append(getCpuInfo(remoteIp, port, save_path)).append(",").append(getMemoryInfo(remoteIp, port, save_path))
+		.append(",").append(getHostInfo(remoteIp, port, save_path)).append(",").append(getStorageInfo(remoteIp, port, save_path)).append("]\n}");
+		return sb.toString();
 	}
 
 }

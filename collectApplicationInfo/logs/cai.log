@@ -1,0 +1,61 @@
+{
+"ALL_2016-01-21 18:28:06":[{
+"CPU_2016-01-21 18:28:07":{
+	"CPU_ssCpuUser": "0",
+	"CPU_ssSwapIn": "0",
+	"CPU_ssRawSwapOut": "0",
+	"CPU_ssCpuSystem": "0",
+	"CPU_ssRawSwapIn": "0",
+	"CPU_ssIORawReceived": "3827796",
+	"CPU_ssCpuRawNiceTime": "3736",
+	"CPU_ssCpuRawSystemTime": "12549",
+	"CPU_ssCpuRawInterrupt": "754",
+	"CPU_SsSwapOut": "0",
+	"CPU_ssCpuIdle": "99",
+	"CPU_ssSysContext": "95",
+	"CPU_hrProcessorLoad": "0##0##",
+	"CPU_ssCpuRawSoftIRQ": "2033",
+	"CPU_ssCpuRawWait": "14153",
+	"CPU_ssSysInterrupts": "511",
+	"CPU_ssIOSent": "5",
+	"CPU_ssCpuRawUserTime": "4718",
+	"CPU_ssIOReceive": "6",
+	"CPU_ssRawInterrupts": "199787638",
+	"CPU_ssCpuRawIdleTime": "39098921",
+	"CPU_ssIORawSent": "4337548",
+	"CPU_ssRawContexts": "37236273"
+}
+}
+,{
+"MEM_2016-01-21 18:28:07":{
+	"MEM_menBuffere": "177776",
+	"MEM_memShared": "0",
+	"MEM_memTotalReal": "2056624",
+	"MEM_hrMemorySize": "2056624",
+	"MEM_memAvailReal": "603336",
+	"MEM_memTotalFree": "4699328",
+	"MEM_memCached": "953540"
+}
+}
+,{
+"HOST_2016-01-21 18:28:07":{
+	"HOST_SYSUPTIME": "2 days, 2:37:36.36",
+	"HOST_SYSCONTACT": "Root <root@localhost> (configure /etc/snmp/snmp.local.conf)",
+	"HOST_SYSDESC": "Linux oracle 2.6.18-238.el5 #1 SMP Thu Jan 13 15:51:15 EST 2011 x86_64",
+	"HOST_SYSLOCATION": "Unknown (edit /etc/snmp/snmpd.conf)",
+	"HOST_SYSNAME": "oracle",
+	"HOST_SYSSERVICE": ""
+}
+}
+,{
+"STORAGE_2016-01-21 18:28:07":{
+	"STORAGE_Used": "177776##1453288##0##942789##12969##0##",
+	"STORAGE_Descr": "Memory Buffers##Real Memory##Swap Space##/##/boot##/proc/fs/vmblock/mountPoint##",
+	"STORAGE_Size": "2056624##2056624##4095992##75156544##101086##0##",
+	"STORAGE_Index": "1##2##3##4##5##6##",
+	"STORAGE_Type": "1.3.6.1.2.1.25.2.1.1##1.3.6.1.2.1.25.2.1.2##1.3.6.1.2.1.25.2.1.3##1.3.6.1.2.1.25.2.1.4##1.3.6.1.2.1.25.2.1.4##1.3.6.1.2.1.25.2.1.4##",
+	"STORAGE_AllocationUnits": "1024##1024##1024##4096##1024##0##"
+}
+}
+]
+}
