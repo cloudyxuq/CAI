@@ -4,13 +4,15 @@
  * 2016年1月14日 下午4:48:25
  * @version 1.0.0
  */
-package com.tinker.cai.remote;
+package com.tinker.cai.remote.util;
 
 /**
  * @author tinker
  *
  */
 public abstract interface IRemoteSession {
+	
+	public abstract String getAllInfo(String remoteIp,String port,String save_path);
 	/**
 	 * 获取远程主机基础信息
 	 * @param remoteIp 远程机器ip地址eg：192.1.1.1
@@ -43,7 +45,7 @@ public abstract interface IRemoteSession {
 	* @param save_path 保存地址
     * @return Json字符串
     */
-   public abstract String getDiskInfo(String remoteIp,String port,String save_path);
+   public abstract String getStorageInfo(String remoteIp,String port,String save_path);
    /**
     * 获取数据库基础信息
     * @param remoteIp 远程机器ip地址eg：192.1.1.1

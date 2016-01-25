@@ -4,6 +4,7 @@
 package com.tinker.cai.remote.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -23,10 +24,10 @@ public class ConvertMap2Json
 	 * @param addComma
 	 * @return
 	 */
-	public static String buildJsonBody(Map<String, Object> body, int tabCount, boolean addComma)
+	public static String buildJsonBody(String head,Map<String, Object> body, int tabCount, boolean addComma)
 	{
 		StringBuilder sbJsonBody = new StringBuilder();
-		sbJsonBody.append("{\n");
+		sbJsonBody.append("{\n"+"\""+head+formatDate(new Date())+"\":"+"{\n");
 		Set<String> keySet = body.keySet();
 		int count = 0;
 		int size = keySet.size();
@@ -36,7 +37,7 @@ public class ConvertMap2Json
 			sbJsonBody.append(buildJsonField(key, body.get(key), tabCount + 1, count != size));
 		}
 		sbJsonBody.append(getTab(tabCount));
-		sbJsonBody.append("}");
+		sbJsonBody.append("}\n}\n");
 		return sbJsonBody.toString();
 	}
 
@@ -95,7 +96,7 @@ public class ConvertMap2Json
 		}
 		else if (value instanceof java.util.Map)
 		{
-			sbJsonValue.append(buildJsonBody((java.util.Map) value, tabCount, addComma));
+			sbJsonValue.append(buildJsonBody("",(java.util.Map) value, tabCount, addComma));
 		}
 		sbJsonValue.append(buildJsonTail(addComma));
 		return sbJsonValue.toString();
@@ -182,7 +183,7 @@ public class ConvertMap2Json
 	 * @param date
 	 * @return
 	 */
-	private static String formatDate(java.util.Date date)
+	public static String formatDate(java.util.Date date)
 	{
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
 	}

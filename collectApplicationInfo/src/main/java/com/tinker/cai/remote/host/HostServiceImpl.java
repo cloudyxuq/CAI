@@ -34,7 +34,7 @@ public class HostServiceImpl implements IHostService {
 					// 获取cpu基础map对象
 					mibMap = LoadMibs.getMapMibsObject(MibConstant.HOST);
 				}
-				List list = SnmpFactoryUtil.getSNMPTable(ip, port, mibMap, PDU.GET);
+				List list = SnmpFactoryUtil.getSNMPTable(ip, port, mibMap, PDU.GETNEXT);
 
 				// 进行snmp连接访问
 				return GenerateSnmpTable.generateSnmpList(list, mibMap);

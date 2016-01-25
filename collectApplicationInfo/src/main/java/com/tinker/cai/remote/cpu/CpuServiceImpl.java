@@ -21,6 +21,7 @@ import com.tinker.cai.remote.util.MibConstant;
  */
 public class CpuServiceImpl implements ICpuService {
 
+	
 	public Map<String, String> getCpuMapInfo(String ip, String port, String save_path, Map<String, String> oidMaps) {
 		// 测试连通性
 		if (!CaiPing.ping_ip(ip)) {
@@ -38,5 +39,6 @@ public class CpuServiceImpl implements ICpuService {
 		return GenerateSnmpTable.generateSnmpList(list, mibMap);
 
 	}
+
 
 }
