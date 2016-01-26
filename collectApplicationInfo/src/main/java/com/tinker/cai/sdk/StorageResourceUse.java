@@ -41,7 +41,10 @@ public class StorageResourceUse {
 	 * %(利用率）
 	 */
 	private String percent = "";
-
+	/**
+	 * mib  ID
+	 */
+	private String type = "";
 	public String getDiskName() {
 		return this.diskName;
 	}
@@ -88,5 +91,13 @@ public class StorageResourceUse {
 
 	public void setAvail(String avail) {
 		this.avail = avail;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

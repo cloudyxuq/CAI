@@ -18,6 +18,9 @@ import com.tinker.cai.remote.snmpFactory.GenerateSnmpTable;
 import com.tinker.cai.remote.snmpFactory.SnmpFactoryUtil;
 import com.tinker.cai.remote.util.LoadMibs;
 import com.tinker.cai.remote.util.MibConstant;
+import com.tinker.cai.sdk.ResourceUse;
+import com.tinker.cai.sdk.ResourceUseUtil;
+import com.tinker.cai.sdk.StorageResourceUse;
 
 /**  
 * @ClassName: StorageServiceImpl  
@@ -43,5 +46,4 @@ public  class StorageServiceImpl implements IStorageService{
 			//进行snmp连接访问
 		return GenerateSnmpTable.generateSnmpList(list,mibMap);
 	}
-
 }
