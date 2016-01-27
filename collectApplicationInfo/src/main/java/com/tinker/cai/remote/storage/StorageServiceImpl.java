@@ -18,11 +18,10 @@ import com.tinker.cai.remote.snmpFactory.GenerateSnmpTable;
 import com.tinker.cai.remote.snmpFactory.SnmpFactoryUtil;
 import com.tinker.cai.remote.util.LoadMibs;
 import com.tinker.cai.remote.util.MibConstant;
+import com.tinker.cai.remote.util.ResourceUseUtil;
 import com.tinker.cai.sdk.ResourceUse;
-import com.tinker.cai.sdk.ResourceUseUtil;
 import com.tinker.cai.sdk.StorageResourceUse;
 
-import net.sf.json.JSONObject;
 
 /**  
 * @ClassName: StorageServiceImpl  
@@ -33,6 +32,13 @@ import net.sf.json.JSONObject;
 */
 public  class StorageServiceImpl implements IStorageService{
 
+	/**
+	 * 通过snmp协议返回设备原始信息的map集合
+	 * ip     虚拟机ip地址
+	 * port   虚拟机snmp端口号  默认161
+	 * save_path 保存路径
+	 * oidMaps  设备mib_id号  没有则默认获取defaultmibs.properties里面相关设备mib号 
+	 */
 	public Map<String, String> getStorageMapInfo(String ip, String port, String save_path,
 			Map<String, String> oidMaps) {
 		if(!CaiPing.ping_ip(ip)){
@@ -49,6 +55,13 @@ public  class StorageServiceImpl implements IStorageService{
 		Map<String, String> map=GenerateSnmpTable.generateSnmpList(list,mibMap);
 		 return map;
 	}
+	/**
+	 * 通过snmp协议返回设备json格式的整体信息，包括磁盘整个情况和单个磁盘的情况
+	 * ip     虚拟机ip地址
+	 * port   虚拟机snmp端口号  默认161
+	 * save_path 保存路径
+	 * oidMaps  设备mib_id号  没有则默认获取defaultmibs.properties里面相关设备mib号 
+	 */
 	public String getTotalStorageInfo(String ip, String port, String save_path,
 			Map<String, String> oidMaps) {
 		if(!CaiPing.ping_ip(ip)){
@@ -77,7 +90,14 @@ public  class StorageServiceImpl implements IStorageService{
 		 sb.append("]}");
 		 return sb.toString();
 	}
-	
+	/**
+	 * 通过snmp协议返回设备json格式的单个磁盘信息
+	 * ip     虚拟机ip地址
+	 * port   虚拟机snmp端口号  默认161
+	 * mib_id 单个磁盘的mib_id
+	 * save_path 保存路径
+	 * oidMaps  设备mib_id号  没有则默认获取defaultmibs.properties里面相关设备mib号 
+	 */
 	public String getSingleStorageInfo(String ip, String port,String mib_id, String save_path,
 			Map<String, String> oidMaps) {
 		if(!CaiPing.ping_ip(ip)){
@@ -99,4 +119,9 @@ public  class StorageServiceImpl implements IStorageService{
 		sb=new StringBuffer(sb.substring(0, sb.length()-1));
 		return sb.toString();
 	}
+//	public static void main(String[] args) {
+//		StorageServiceImpl s=new StorageServiceImpl();
+//		System.out.println(s.getSingleStorageInfo("192.168.4.16", "161","1.3.6.1.2.1.25.2.1.4", "",null));
+//		System.out.println(s.getTotalStorageInfo("192.168.4.16", "161", "",null));
+//	}
 }
