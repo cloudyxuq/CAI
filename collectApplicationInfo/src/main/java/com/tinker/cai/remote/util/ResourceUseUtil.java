@@ -1,4 +1,4 @@
-package com.tinker.cai.sdk;
+package com.tinker.cai.remote.util;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.adventnet.snmp.mibs.mibparser.MIBConstants;
-import com.tinker.cai.remote.util.MibConstant;
+import com.tinker.cai.sdk.ResourceUse;
+import com.tinker.cai.sdk.StorageResourceUse;
 
 public class ResourceUseUtil {
 	   /**
