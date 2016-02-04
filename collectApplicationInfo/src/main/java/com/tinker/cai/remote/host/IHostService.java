@@ -21,4 +21,5 @@ public abstract interface IHostService {
 	 */
 	public abstract Map<String,String> getHostMapInfo(String ip,String port,String save_path, Map<String,String> oidMaps);
 
+	public abstract String getHostInfo(String ip,String port,String save_path, Map<String,String> oidMaps);
 }
