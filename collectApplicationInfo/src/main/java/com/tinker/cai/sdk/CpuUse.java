@@ -11,13 +11,13 @@ public class CpuUse {
 	private String ssCpuRawInterrupt="";
 	//原始用户CPU使用时间
 	private String ssCpuRawIdleTime="";
-	//
+	//原始交换区输入
 	private String ssRawSwapIn="";
-	//
+	//交换区输入
 	private String ssSwapIn="";
 	//系统CPU百分比
 	private String ssCpuSystem="";
-	//
+	//原始交换区输出
 	private String ssRawSwapOut="";
 	//
 	private String ssSysContext="";
@@ -33,9 +33,9 @@ public class CpuUse {
 	private String ssCpuRawWait="";
 	//用户CPU百分比
 	private String ssCpuUser="";
-	//
+	//交换区输出
 	private String SsSwapOut="";
-	//
+	//原始IO接收
 	private String ssIORawReceived="";
 	//
 	private String ssRawInterrupts="";
@@ -43,7 +43,7 @@ public class CpuUse {
 	private String hrProcessorLoad="";
 	//
 	private String ssCpuRawSoftIRQ="";
-	//
+	//原始IO发送
 	private String ssIORawSent="";
 	//原始用户CPU使用时间
 	private String ssCpuRawUserTime="";
