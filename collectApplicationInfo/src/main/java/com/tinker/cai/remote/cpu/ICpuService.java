@@ -18,5 +18,7 @@ public abstract interface ICpuService {
 	 * @return
 	 */
 	public abstract Map<String,String> getCpuMapInfo(String ip,String port,String save_path, Map<String,String> oidMaps);
+	
+	public abstract String getCpuInfo(String ip,String port,String save_path, Map<String,String> oidMaps);
 
 }

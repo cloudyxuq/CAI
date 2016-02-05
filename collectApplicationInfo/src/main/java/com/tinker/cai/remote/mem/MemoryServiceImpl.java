@@ -72,11 +72,11 @@ public class MemoryServiceImpl implements IMemoryService {
 		MemoryUseUtil util=new MemoryUseUtil();
 		MemoryUse mem=util.getTotalMemoryInfo(map);
 		StringBuffer sb=new StringBuffer();
-		sb.append("{\"size\":"+mem.getHrMemorySize()+",\"used\":"+mem.getMemUsedReal()+",\"free\":"+mem.getMemAvailReal()+",\"percent\":"+mem.getMemPercent()+",\"share\":"+mem.getMemShared()+",\"buffer\":"+mem.getMemBuffer()+",\"cached\":"+mem.getMemCached()+"}");
+		sb.append("{\"size\":\""+mem.getHrMemorySize()+"\",\"used\":\""+mem.getMemUsedReal()+"\",\"free\":\""+mem.getMemAvailReal()+"\",\"percent\":\""+mem.getMemPercent()+"\",\"share\":\""+mem.getMemShared()+"\",\"buffer\":\""+mem.getMemBuffer()+"\",\"cached\":\""+mem.getMemCached()+"\"}");
 		return sb.toString();
 	}
 //public static void main(String[] args) {
 //	MemoryServiceImpl m=new MemoryServiceImpl();
-//	System.out.println(m.getMemoryInfo("192.168.4.16", "161", "",null));
+//	System.out.println(m.getMemoryInfo("192.168.0.110", "161", "",null));
 //}
 }
